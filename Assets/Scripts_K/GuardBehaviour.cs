@@ -17,7 +17,11 @@ public class GuardBehaviour : MonoBehaviour
     {
         if(chasingGO != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, chasingGO.transform.position, speed*Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                chasingGO.transform.position + new Vector3(0, transform.localScale.y,0),
+                speed * Time.deltaTime
+                );
             transform.forward = chasingGO.transform.position - transform.position;
         }
     }
