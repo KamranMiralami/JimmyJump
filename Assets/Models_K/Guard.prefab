@@ -144,7 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad0e17147a69614b8cc1dfa96d0ba7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleRenderer: {fileID: 7108023752221426070}
+  looping: 0
+  CircleSteps: 1000
+  CircleDuration: 5
 --- !u!1 &7425673703030883244
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +163,7 @@ GameObject:
   - component: {fileID: 7493101424762311082}
   m_Layer: 0
   m_Name: Guard
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901e7eca4ceae1a4c976d584bd9150ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!135 &7493101424762311082
 SphereCollider:
   m_ObjectHideFlags: 0

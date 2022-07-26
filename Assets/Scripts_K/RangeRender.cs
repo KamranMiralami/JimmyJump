@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 public class RangeRender : MonoBehaviour
 {
+    public bool looping;
     public int CircleSteps;
     public int CircleDuration;
     LineRenderer circleRenderer;
@@ -23,6 +24,8 @@ public class RangeRender : MonoBehaviour
                 await DrawCircle(CircleSteps, i, CircleDuration);
             }
             await DrawCircle(CircleSteps, col.radius, CircleDuration);
+            if (!looping)
+                break;
         }
     }
     async Task DrawCircle(int steps,float radius,int delay)
@@ -37,7 +40,7 @@ public class RangeRender : MonoBehaviour
             float yScale=Mathf.Sin(currentRadian);
             float x=xScale*radius;
             float y=yScale*radius;
-            Vector3 currentPosition = new Vector3(x,-transform.parent.transform.position.y+0.2f, y)+transform.position;
+            Vector3 currentPosition = new Vector3(x,-transform.parent.transform.position.y+0.1f, y)+transform.position;
             circleRenderer.SetPosition(currentStep, currentPosition);
         }
     }
