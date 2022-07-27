@@ -11,6 +11,7 @@ public class GuardBehaviour : MonoBehaviour
         {
             Debug.Log("player in " + gameObject.name + " range ");
             chasingGO = other.gameObject;
+            GetComponentInChildren<RangeRender>().DrawCircle();
         }
     }
     private void Update()
