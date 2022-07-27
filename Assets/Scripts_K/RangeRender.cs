@@ -22,10 +22,12 @@ public class RangeRender : MonoBehaviour
             for (float i = 0; i < col.radius; i+=0.1f)
             {
                 await DrawCircle(CircleSteps, i, CircleDuration);
+                if (!looping)
+                    break;
             }
-            await DrawCircle(CircleSteps, col.radius, CircleDuration);
             if (!looping)
                 break;
+            await DrawCircle(CircleSteps, col.radius, CircleDuration+1000);
         }
     }
     async Task DrawCircle(int steps,float radius,int delay)
@@ -42,6 +44,15 @@ public class RangeRender : MonoBehaviour
             float y=yScale*radius;
             Vector3 currentPosition = new Vector3(x,-transform.parent.transform.position.y+0.1f, y)+transform.position;
             circleRenderer.SetPosition(currentStep, currentPosition);
+        }
+    }
+    public async void DrawCircle()
+    {
+        looping = false;
+        await Task.Delay(100);
+        for (int currentStep = 0; currentStep < CircleSteps; currentStep++)
+        {
+            circleRenderer.SetPosition(currentStep, Vector3.zero);
         }
     }
 }
