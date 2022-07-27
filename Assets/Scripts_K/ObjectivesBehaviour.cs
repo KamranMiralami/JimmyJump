@@ -7,6 +7,7 @@ public enum Obj
 }
 public class ObjectivesBehaviour : MonoBehaviour
 {
+    [SerializeField] GameObject gameHnadler;
     // later
     public Obj objective; 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +15,10 @@ public class ObjectivesBehaviour : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             //do the objective
-
+            gameHnadler.GetComponent<GameHandlerScript>()
+                .focusCamera(
+                transform.GetChild(0).transform.position,
+                transform.GetChild(0).transform.rotation);
         }    
     }
 }
