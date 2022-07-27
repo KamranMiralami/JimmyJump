@@ -7,12 +7,12 @@ namespace Scripts_E
     public enum Actions
     {
         Selfie,
-        Signature,
+        Sign,
         Shoot
     }
     public class NewBehaviourScript : MonoBehaviour
     {
-
+        
         
   
         void Start()
