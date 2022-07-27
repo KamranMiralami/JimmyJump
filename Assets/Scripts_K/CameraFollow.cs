@@ -6,12 +6,19 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
+    public bool isFollowing = true;
     private void Start()
     {
-        offset = transform.position-target.position;
+        if (isFollowing)
+        {
+            offset = transform.position - target.position;
+        }
     }
     private void Update()
     {
-        transform.position = target.position + offset;
+        if (isFollowing)
+        {
+            transform.position = target.position + offset;
+        }
     }
 }
