@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace Scripts_E
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum Actions
     {
-        
+        Selfie,
+        Signature,
+        Shoot
     }
-
-    // Update is called once per frame
-    void Update()
+    public class NewBehaviourScript : MonoBehaviour
     {
+  
+        void Start()
+        {
+            
         
+        }
+
+  
+        void Update()
+        {
+        
+        }
     }
 }
