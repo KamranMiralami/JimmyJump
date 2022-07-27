@@ -12,6 +12,8 @@ namespace Scripts_E
     }
     public class NewBehaviourScript : MonoBehaviour
     {
+        
+        
   
         void Start()
         {
