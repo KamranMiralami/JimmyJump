@@ -10,7 +10,7 @@ public class PenaltyShoot : MonoBehaviour
     private Boolean ableShoot = true;
     [SerializeField] private GameObject goal;
     [SerializeField] private float power = 50f;
-    
+    public PlayerMove pm;
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && ableShoot)
@@ -24,7 +24,8 @@ public class PenaltyShoot : MonoBehaviour
     private IEnumerator wait()
     {
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
+        pm.EnableMoving();
         Target.SetActive(false);
         this.gameObject.SetActive(false);
         goal.GetComponent<GameHandlerScript>().cameraFollow();
@@ -32,6 +33,7 @@ public class PenaltyShoot : MonoBehaviour
 
     private void Start()
     {
+        pm.DisableMoving();
         Target.SetActive(true);
         Target.transform.DOMove(new Vector3(-46, 4, 8), 2.5f).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
     }
