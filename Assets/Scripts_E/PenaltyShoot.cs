@@ -35,7 +35,6 @@ public class PenaltyShoot : MonoBehaviour
         Target.SetActive(true);
         Target.transform.DOMove(new Vector3(-46, 4, 8), 2.5f).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
     }
-
     private void Shoot()
     {
         Vector3 shoot = (Target.transform.position - transform.position).normalized;
