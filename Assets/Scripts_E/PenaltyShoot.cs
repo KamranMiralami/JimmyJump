@@ -8,6 +8,7 @@ public class PenaltyShoot : MonoBehaviour
 {
     [SerializeField] private GameObject Target;
     private Boolean ableShoot = true;
+    [SerializeField] private GameObject goal;
     [SerializeField] private float power = 50f;
     void Update()
     {
@@ -18,6 +19,21 @@ public class PenaltyShoot : MonoBehaviour
             
             
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Goal"))
+        {
+            StartCoroutine(wait());
+        }
+
+    }
+    private IEnumerator wait()
+    {
+
+        yield return new WaitForSeconds(2);
+        goal.GetComponent<GameHandlerScript>().cameraFollow();
     }
 
     private void Start()

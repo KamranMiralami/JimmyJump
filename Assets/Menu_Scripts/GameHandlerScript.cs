@@ -68,12 +68,12 @@ public class GameHandlerScript : MonoBehaviour
             yield return null;
         }
         t = 0f;
-        while (t < 5)
-        {
-            t += Time.deltaTime / duration;
-            yield return null;
-        }
-        cameraFollow();
+        // while (t < 5)
+        // {
+        //     t += Time.deltaTime / duration;
+        //     yield return null;
+        // }
+        // cameraFollow();
     }
 
     // Update is called once per frame
