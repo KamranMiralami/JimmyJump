@@ -68,7 +68,7 @@ public class GameHandlerScript : MonoBehaviour
             yield return null;
         }
         t = 0f;
-        while (t < 1)
+        while (t < 5)
         {
             t += Time.deltaTime / duration;
             yield return null;
