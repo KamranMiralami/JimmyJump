@@ -8,6 +8,8 @@ public enum Obj
 public class ObjectivesBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject gameHnadler;
+    [SerializeField] private GameObject Ball;
+        
     // later
     public Obj objective; 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +21,8 @@ public class ObjectivesBehaviour : MonoBehaviour
                 .focusCamera(
                 transform.GetChild(0).transform.position,
                 transform.GetChild(0).transform.rotation);
+            GetComponent<MeshRenderer>().enabled = false;
+            Ball.GetComponent<PenaltyShoot>().enabled = true;
         }    
     }
 }
