@@ -19,14 +19,13 @@ public class DamageIndicatorScript : MonoBehaviour
             indicators[i] = Instantiate(indicatorSample);
             indicators[i].transform.parent = gameObject.transform;
             indicators[i].GetComponent<Renderer>().material.color = Color.red;
-            Vector3 pos = transform.parent.position +
-                Vector3.Normalize(guards[i].transform.position - transform.parent.position);
+            Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
+            dir.y = 0;
+            indicators[i].transform.forward = dir;
+            Vector3 pos = transform.position + dir;
             indicators[i].transform.position = pos;
-            indicators[i].transform.localScale = new Vector3(
-                scaleOfIndicator(guards[i].transform.position),
-                scaleOfIndicator(guards[i].transform.position),
-                scaleOfIndicator(guards[i].transform.position)
-                );
+            float scale = scaleOfIndicator(guards[i].transform.position);
+            indicators[i].transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 
@@ -40,14 +39,13 @@ public class DamageIndicatorScript : MonoBehaviour
     {
         for (int i = 0; i < guards.Length; i++)
         {
-            Vector3 pos = transform.parent.position +
-                Vector3.Normalize(guards[i].transform.position - transform.parent.position);
+            Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
+            dir.y = 0;
+            indicators[i].transform.forward = dir;
+            Vector3 pos = transform.position + dir;
             indicators[i].transform.position = pos;
-            indicators[i].transform.localScale = new Vector3(
-                scaleOfIndicator(guards[i].transform.position),
-                scaleOfIndicator(guards[i].transform.position),
-                scaleOfIndicator(guards[i].transform.position)
-                );
+            float scale = scaleOfIndicator(guards[i].transform.position);
+            indicators[i].transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 }
