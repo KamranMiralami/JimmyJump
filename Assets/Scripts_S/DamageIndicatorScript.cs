@@ -6,6 +6,8 @@ public class DamageIndicatorScript : MonoBehaviour
 {
     [SerializeField] GameObject indicatorSample;
     [SerializeField] float maxDistance = 5;
+    [SerializeField] float maxScaleMultiplier = 1;
+    Vector3 initialScale;
     GameObject[] guards;
     GameObject[] indicators;
 
@@ -13,6 +15,7 @@ public class DamageIndicatorScript : MonoBehaviour
     void Start()
     {
         guards = GameObject.FindGameObjectsWithTag("Guard");
+        initialScale = indicatorSample.transform.localScale;
         indicators = new GameObject[guards.Length];
         for(int i = 0; i < guards.Length; i++)
         {
@@ -24,14 +27,15 @@ public class DamageIndicatorScript : MonoBehaviour
             indicators[i].transform.forward = dir;
             Vector3 pos = transform.position + dir;
             indicators[i].transform.position = pos;
-            float scale = scaleOfIndicator(guards[i].transform.position);
-            indicators[i].transform.localScale = new Vector3(scale, scale, scale);
+            indicators[i].transform.localScale = scaleOfIndicator(guards[i].transform.position);
         }
     }
 
-    float scaleOfIndicator(Vector3 pos)
+    Vector3 scaleOfIndicator(Vector3 pos)
     {
-        return (maxDistance - Mathf.Min((pos - transform.parent.position).magnitude, maxDistance)) / maxDistance;
+        float scale = (maxDistance - Mathf.Min((pos - transform.parent.position).magnitude, maxDistance)) / maxDistance;
+        scale *= maxScaleMultiplier;
+        return initialScale * scale;
     }
 
     // Update is called once per frame
@@ -44,8 +48,7 @@ public class DamageIndicatorScript : MonoBehaviour
             indicators[i].transform.forward = dir;
             Vector3 pos = transform.position + dir;
             indicators[i].transform.position = pos;
-            float scale = scaleOfIndicator(guards[i].transform.position);
-            indicators[i].transform.localScale = new Vector3(scale, scale, scale);
+            indicators[i].transform.localScale = scaleOfIndicator(guards[i].transform.position);
         }
     }
 }
