@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GuardBehaviour : MonoBehaviour
 {
-    GameObject chasingGO = null;
+    public GameObject chasingGO = null;
     public float speed;
     private void OnTriggerEnter(Collider other)
     {
