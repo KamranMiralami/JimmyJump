@@ -21,7 +21,6 @@ public class DamageIndicatorScript : MonoBehaviour
         {
             indicators[i] = Instantiate(indicatorSample);
             indicators[i].transform.parent = gameObject.transform;
-            indicators[i].GetComponent<Renderer>().material.color = Color.red;
             Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
             dir.y = 0;
             indicators[i].transform.forward = dir;
