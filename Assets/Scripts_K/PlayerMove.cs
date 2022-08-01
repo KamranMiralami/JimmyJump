@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 cf;
     float cameraOffsetPercentage=0f;
     Vector3 direction = Vector3.zero;
-    bool moveEnable=true;
+    public bool moveEnable=true;
     private void Start()
     {
         cf = new Vector3(cameraFollow.offset.x, cameraFollow.offset.y, cameraFollow.offset.z);
