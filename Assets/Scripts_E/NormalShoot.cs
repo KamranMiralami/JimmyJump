@@ -11,18 +11,7 @@ public class NormalShoot : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GetComponent<Rigidbody>().AddForce((transform.position - _player.transform.position) * 1500f * Time.deltaTime);
-            GetComponent<Rigidbody>().AddForce(transform.up * 2000f * Time.deltaTime);
+            GetComponent<Rigidbody>().AddForce(transform.up * 500f * Time.deltaTime);
         }
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

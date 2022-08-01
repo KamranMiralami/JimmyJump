@@ -7,6 +7,7 @@ using UnityEngine;
 public class PenaltyShoot : MonoBehaviour
 {
     [SerializeField] private GameObject Target;
+    [SerializeField] private GameObject Target2;
     private Boolean ableShoot = true;
     [SerializeField] private GameObject goal;
     [SerializeField] private float power = 50f;
@@ -15,6 +16,7 @@ public class PenaltyShoot : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && ableShoot)
         {
+            Target.transform.DOKill(true);
             Shoot();
             ableShoot = false;
             
@@ -35,10 +37,14 @@ public class PenaltyShoot : MonoBehaviour
     {
         pm.DisableMoving();
         Target.SetActive(true);
-        Target.transform.DOMove(new Vector3(-46, 4, 8), 2.5f).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
+        var position = Target2.transform.position;
+        Target.transform.DOMove(new Vector3
+            (position.x, position.y, position.z), 2f)
+            .SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
     }
     private void Shoot()
     {
+        
         Vector3 shoot = (Target.transform.position - transform.position).normalized;
         GetComponent<Rigidbody>().AddForce(shoot * power,ForceMode.Impulse);
         StartCoroutine(wait());
