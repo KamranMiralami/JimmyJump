@@ -6,10 +6,12 @@ public class GuardBehaviour : MonoBehaviour
     public GameObject chasingGO = null;
     public float speed;
     public Animator modelAnimation;
+    public GameObject range;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            range.SetActive(false);
             modelAnimation.SetBool("isRunning", true);
             Debug.Log("player in " + gameObject.name + " range ");
             chasingGO = other.gameObject;
