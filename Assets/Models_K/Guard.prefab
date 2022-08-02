@@ -392,6 +392,7 @@ MonoBehaviour:
   modelAnimation: {fileID: 678447629087042324}
   range: {fileID: 649889027412990377}
   audioSource: {fileID: 5574623918086971878}
+  canMove: 1
 --- !u!135 &7493101424762311082
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -419,7 +420,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &5574623918086971878
 AudioSource:

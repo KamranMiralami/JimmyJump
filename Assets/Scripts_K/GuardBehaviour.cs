@@ -9,6 +9,7 @@ public class GuardBehaviour : MonoBehaviour
     public GameObject range;
     public AudioSource audioSource;
     bool isPlaying = false;
+    public bool canMove = true;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -27,7 +28,7 @@ public class GuardBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        if(chasingGO != null)
+        if(chasingGO != null && canMove)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,

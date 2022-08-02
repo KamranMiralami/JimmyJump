@@ -17,6 +17,8 @@ public class BallImpactHandlerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             modelAnimation.SetBool("isDead", true);
+            transform.parent.GetComponent<GuardBehaviour>().canMove = false;
+            transform.parent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             StartCoroutine(resizeCollider());
         }
     }
