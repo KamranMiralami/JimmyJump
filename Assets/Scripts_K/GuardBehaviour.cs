@@ -7,8 +7,8 @@ public class GuardBehaviour : MonoBehaviour
     public float speed;
     public Animator modelAnimation;
     public GameObject range;
-    public AudioSource audioSource;
-    bool isPlaying = false;
+    public AudioSource runAudio;
+    bool isPlayingRun = false;
     public bool canMove = true;
     private void OnTriggerEnter(Collider other)
     {
@@ -16,10 +16,10 @@ public class GuardBehaviour : MonoBehaviour
         {
             range.SetActive(false);
             modelAnimation.SetBool("isRunning", true);
-            if (!isPlaying)
+            if (!isPlayingRun)
             {
-                audioSource.Play();
-                isPlaying = true;
+                runAudio.Play();
+                isPlayingRun = true;
             }
             Debug.Log("player in " + gameObject.name + " range ");
             chasingGO = other.gameObject;
