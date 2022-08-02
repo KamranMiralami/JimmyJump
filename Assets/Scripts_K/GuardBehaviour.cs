@@ -21,9 +21,9 @@ public class GuardBehaviour : MonoBehaviour
                 runAudio.Play();
                 isPlayingRun = true;
             }
-            Debug.Log("player in " + gameObject.name + " range ");
+            //Debug.Log("player in " + gameObject.name + " range ");
             chasingGO = other.gameObject;
-            GetComponentInChildren<RangeRender>().DrawCircle();
+            //GetComponentInChildren<RangeRender>().DrawCircle();
         }
     }
     private void Update()

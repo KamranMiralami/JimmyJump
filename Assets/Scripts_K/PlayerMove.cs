@@ -44,13 +44,13 @@ public class PlayerMove : MonoBehaviour
     }
     public void EnableMoving()
     {
-        Debug.LogWarning("enabling");
+        //Debug.LogWarning("enabling");
         moveEnable = true;
         anim.SetBool("isRunning", true);
     }
     public void DisableMoving()
     {
-        Debug.LogWarning("disabling");
+        //Debug.LogWarning("disabling");
         moveEnable = false;
         anim.SetBool("isRunning", false);
     }
