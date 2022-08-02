@@ -8,6 +8,7 @@ TagManager:
   - Objective
   - Goal
   - Ball
+  - SoccerPlayer
   layers:
   - Default
   - TransparentFX
