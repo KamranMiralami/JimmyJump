@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jimmy Jump
+  m_text: Levels
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc0bb8162192beb4a93f6da33a72600f, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: fc0bb8162192beb4a93f6da33a72600f, type: 2}
@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502102727}
-        m_TargetAssemblyTypeName: MainMenuHandlerScript, Assembly-CSharp
+      - m_Target: {fileID: 502102729}
+        m_TargetAssemblyTypeName: LevelMenuHandlerScript, Assembly-CSharp
         m_MethodName: LoadHighScores
         m_Mode: 1
         m_Arguments:
@@ -630,26 +630,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 502102728}
-  - component: {fileID: 502102727}
+  - component: {fileID: 502102729}
   m_Layer: 0
-  m_Name: MainMenuHandler
+  m_Name: LevelMenuHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &502102727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502102726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47a8559ac09b4a418c4091c7b7a9ad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &502102728
 Transform:
   m_ObjectHideFlags: 0
@@ -665,6 +653,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502102729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502102726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cb5b4811eb80049a32f69a5c0ae76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1523926329
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,9 +968,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502102727}
-        m_TargetAssemblyTypeName: MainMenuHandlerScript, Assembly-CSharp
-        m_MethodName: Levels
+      - m_Target: {fileID: 502102729}
+        m_TargetAssemblyTypeName: LevelMenuHandlerScript, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

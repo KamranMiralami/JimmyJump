@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuHandlerScript : MonoBehaviour
+public class LevelMenuHandlerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        HighScores highScores = new HighScores();
-        highScores.names = new string[] { "me", "you", "them" };
-        highScores.scores = new int[] { 1, 2, 3 };
-        PlayerPrefs.SetString("scores", JsonUtility.ToJson(highScores));
+        
     }
 
-    public void Levels()
+    public void Play()
     {
-        SceneManager.LoadScene("Levels");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void LoadHighScores()
