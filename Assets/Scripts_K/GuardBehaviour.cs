@@ -12,7 +12,24 @@ public class GuardBehaviour : MonoBehaviour
     public bool canMove = true;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(chasingGO == null)
+            if(other.gameObject.CompareTag("Player"))
+            {
+                range.SetActive(false);
+                modelAnimation.SetBool("isRunning", true);
+                if (!isPlayingRun)
+                {
+                    runAudio.Play();
+                    isPlayingRun = true;
+                }
+                //Debug.Log("player in " + gameObject.name + " range ");
+                chasingGO = other.gameObject;
+                //GetComponentInChildren<RangeRender>().DrawCircle();
+            }
+    }
+    private void Start()
+    {
+        if (chasingGO != null)
         {
             range.SetActive(false);
             modelAnimation.SetBool("isRunning", true);
@@ -21,9 +38,6 @@ public class GuardBehaviour : MonoBehaviour
                 runAudio.Play();
                 isPlayingRun = true;
             }
-            //Debug.Log("player in " + gameObject.name + " range ");
-            chasingGO = other.gameObject;
-            //GetComponentInChildren<RangeRender>().DrawCircle();
         }
     }
     private void Update()

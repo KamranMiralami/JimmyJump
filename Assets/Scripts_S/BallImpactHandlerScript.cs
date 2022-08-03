@@ -7,7 +7,7 @@ public class BallImpactHandlerScript : MonoBehaviour
     [SerializeField] Animator modelAnimation;
     public AudioSource deathAudio;
     bool isDeathPlayed = false;
-
+    public KnockOutBehaviour ko;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,10 @@ public class BallImpactHandlerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+            if(ko!=null)
+            {
+                ko.Hit();
+            }
             modelAnimation.SetBool("isDead", true);
             if (!isDeathPlayed)
             {
