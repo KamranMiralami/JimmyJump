@@ -14,9 +14,9 @@ public class MainMenuHandlerScript : MonoBehaviour
         PlayerPrefs.SetString("scores", JsonUtility.ToJson(highScores));
     }
 
-    public void Play()
+    public void Levels()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Levels");
     }
 
     public void LoadHighScores()
