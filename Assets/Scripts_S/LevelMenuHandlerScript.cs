@@ -11,9 +11,9 @@ public class LevelMenuHandlerScript : MonoBehaviour
         
     }
 
-    public void Play()
+    public void LoadLevel(string levelName)
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(levelName);
     }
 
     public void Back()
