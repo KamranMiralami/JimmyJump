@@ -10,6 +10,7 @@ public class SoccerPlayerBehaviour : MonoBehaviour
     [SerializeField] Image selfieImage;
     [SerializeField] Image tapImage;
     [SerializeField] float selfieDuration = 1.5f;
+    [SerializeField] float selfiePopupDuration = 0.5f;
     [SerializeField] RectTransform mainCanvasRect;
     bool isTriggered = false;
     bool countingTaps = false;
@@ -29,21 +30,27 @@ public class SoccerPlayerBehaviour : MonoBehaviour
             player.GetComponent<PlayerMove>().DisableMoving();
             selfieImage.gameObject.SetActive(true);
             countingTaps = true;
-            StartCoroutine(selfieRoutine(selfieDuration));
+            StartCoroutine(selfieRoutine());
         }
     }
 
-    IEnumerator selfieRoutine(float duration)
+    IEnumerator selfieRoutine()
     {
         float t = 0f;
         float initialY = selfieImage.transform.localPosition.y;
         while (t < 1)
         {
-            t += Time.deltaTime / duration;
+            t += Time.deltaTime / selfiePopupDuration;
             selfieImage.transform.localPosition = new Vector3(
                 selfieImage.transform.localPosition.x,
                 Mathf.Lerp(initialY, 0, t),
                 selfieImage.transform.localPosition.z);
+            yield return null;
+        }
+        t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / selfieDuration;
             yield return null;
         }
         countingTaps = false;

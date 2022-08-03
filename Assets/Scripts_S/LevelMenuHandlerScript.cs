@@ -16,9 +16,9 @@ public class LevelMenuHandlerScript : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void LoadHighScores()
+    public void Back()
     {
-        SceneManager.LoadScene("HighScores");
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Update is called once per frame
