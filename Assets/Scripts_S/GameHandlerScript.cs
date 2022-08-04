@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameHandlerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] menuObjects;
+    [SerializeField] Image compass;
+    [SerializeField] GameObject objective;
+    [SerializeField] GameObject player;
     Quaternion cameraQuaternion;
 
     // Start is called before the first frame update
@@ -79,6 +83,12 @@ public class GameHandlerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(objective != null)
+        {
+            Vector3 dir = objective.transform.position - player.transform.position;
+            dir.y = 0;
+            float angle = Vector3.SignedAngle(dir, Vector3.forward, Vector3.up);
+            compass.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
     }
 }
