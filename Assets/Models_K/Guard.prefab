@@ -321,7 +321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelAnimation: {fileID: 678447629087042324}
+  ballMinSpeed: 3
   deathAudio: {fileID: 4950102102878347306}
+  ko: {fileID: 0}
 --- !u!1 &7425673703030883244
 GameObject:
   m_ObjectHideFlags: 0
