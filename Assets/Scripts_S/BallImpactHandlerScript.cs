@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallImpactHandlerScript : MonoBehaviour
 {
     [SerializeField] Animator modelAnimation;
+    [SerializeField] float ballMinSpeed = 1f;
     public AudioSource deathAudio;
     bool isDeathPlayed = false;
     public KnockOutBehaviour ko;
@@ -18,19 +19,22 @@ public class BallImpactHandlerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            if(ko!=null)
+            if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= ballMinSpeed)
             {
-                ko.Hit();
+                if (ko != null)
+                {
+                    ko.Hit();
+                }
+                modelAnimation.SetBool("isDead", true);
+                if (!isDeathPlayed)
+                {
+                    isDeathPlayed = true;
+                    deathAudio.Play();
+                }
+                transform.parent.GetComponent<GuardBehaviour>().canMove = false;
+                transform.parent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                StartCoroutine(resizeCollider());
             }
-            modelAnimation.SetBool("isDead", true);
-            if (!isDeathPlayed)
-            {
-                isDeathPlayed = true;
-                deathAudio.Play();
-            }
-            transform.parent.GetComponent<GuardBehaviour>().canMove = false;
-            transform.parent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            StartCoroutine(resizeCollider());
         }
     }
 
