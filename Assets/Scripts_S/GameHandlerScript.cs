@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class GameHandlerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] menuObjects;
+    [SerializeField] GameObject youLoseText;
+    [SerializeField] GameObject mainCanvas;
+    [SerializeField] float loseAnimationDuration = 0.5f;
+    [SerializeField] float loseDelayToMenu = 1.5f;
+    [SerializeField] AudioSource loseAudio;
+    [SerializeField] AudioSource winAudio;
     Quaternion cameraQuaternion;
 
     // Start is called before the first frame update
@@ -75,6 +81,39 @@ public class GameHandlerScript : MonoBehaviour
         //     yield return null;
         // }
         // cameraFollow();
+    }
+
+    public void lose()
+    {
+        GameObject text = Instantiate(youLoseText, mainCanvas.transform);
+        loseAudio.Play();
+        StartCoroutine(loseRoutine(text));
+    }
+
+    IEnumerator loseRoutine(GameObject loseText)
+    {
+        float t = 0f;
+        Vector3 initialPos = loseText.transform.localPosition;
+        loseText.transform.localPosition = new Vector3(
+                initialPos.x,
+                900,
+                initialPos.z);
+        while (t < 1)
+        {
+            t += Time.deltaTime / loseAnimationDuration;
+            loseText.transform.localPosition = new Vector3(
+                initialPos.x,
+                Mathf.Lerp(900, initialPos.y, t),
+                initialPos.z);
+            yield return null;
+        }
+        t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / loseDelayToMenu;
+            yield return null;
+        }
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Update is called once per frame

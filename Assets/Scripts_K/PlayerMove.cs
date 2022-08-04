@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] GameObject gameHandler;
     public FixedJoystick joystick;
     public Animator anim;
     public CharacterController characterController;
@@ -62,6 +63,7 @@ public class PlayerMove : MonoBehaviour
         anim.SetBool("isDead", true);
         DisableMoving();
         StartCoroutine(playerDeathFall(1.5f));
+        gameHandler.GetComponent<GameHandlerScript>().lose();
     }
 
     IEnumerator playerDeathFall(float duration)
