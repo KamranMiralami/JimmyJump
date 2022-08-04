@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            cameraOffsetPercentage = Mathf.Clamp01(cameraOffsetPercentage + Time.deltaTime * 0.1f);
+            cameraOffsetPercentage = Mathf.Clamp01(cameraOffsetPercentage + Time.deltaTime * 0.025f);
         }
         //Debug.LogWarning(cameraOffsetPercentage);
         transform.forward = Vector3.Lerp(transform.forward, direction, 150f * Time.deltaTime);
