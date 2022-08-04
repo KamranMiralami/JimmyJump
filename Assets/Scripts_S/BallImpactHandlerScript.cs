@@ -36,6 +36,20 @@ public class BallImpactHandlerScript : MonoBehaviour
                 StartCoroutine(resizeCollider());
             }
         }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            transform.parent.gameObject.GetComponent<GuardBehaviour>().stop();
+            modelAnimation.SetBool("isPunching", true);
+            other.gameObject.GetComponent<PlayerMove>().Death(
+                gameObject.transform.position - other.gameObject.transform.position);
+            StartCoroutine(delayedFalse());
+        }
+    }
+
+    IEnumerator delayedFalse()
+    {
+        yield return new WaitForSeconds(0.5f);
+        modelAnimation.SetBool("isPunching", false);
     }
 
     public IEnumerator resizeCollider()

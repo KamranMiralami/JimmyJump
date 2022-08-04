@@ -52,4 +52,12 @@ public class GuardBehaviour : MonoBehaviour
             transform.forward = chasingGO.transform.position - transform.position;
         }
     }
+
+    public void stop()
+    {
+        canMove = false;
+        modelAnimation.SetBool("isRunning", false);
+        Quaternion temp = gameObject.transform.rotation;
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, temp.eulerAngles.y, temp.eulerAngles.z));
+    }
 }

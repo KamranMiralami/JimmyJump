@@ -54,4 +54,28 @@ public class PlayerMove : MonoBehaviour
         moveEnable = false;
         anim.SetBool("isRunning", false);
     }
+
+    public void Death(Vector3 forward)
+    {
+        forward.y = 0;
+        gameObject.transform.forward = forward;
+        anim.SetBool("isDead", true);
+        DisableMoving();
+        StartCoroutine(playerDeathFall(1.5f));
+    }
+
+    IEnumerator playerDeathFall(float duration)
+    {
+        float t = 0f;
+        Vector3 initialPos = gameObject.transform.position;
+        while (t < 1)
+        {
+            t += Time.deltaTime / duration;
+            gameObject.transform.position = new Vector3(
+                initialPos.x,
+                Mathf.Lerp(initialPos.y, -0.7f, t),
+                initialPos.z);
+            yield return null;
+        }
+    }
 }
