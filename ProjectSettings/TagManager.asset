@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - Ball
   - SoccerPlayer
+  - Win
   layers:
   - Default
   - TransparentFX

@@ -7,8 +7,9 @@ using UnityEngine;
 public class PenaltyShoot : MonoBehaviour
 {
     [SerializeField] private GameObject Target;
+    [SerializeField] private GameObject objective;
     [SerializeField] private GameObject Target2;
-    private Boolean ableShoot = true;
+    private Boolean ableShoot = true, AbleDance = false;
     [SerializeField] private Animator WinOrLose;
     [SerializeField] private GameObject goal;
     [SerializeField] private float power = 50f;
@@ -24,14 +25,40 @@ public class PenaltyShoot : MonoBehaviour
             
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Win"))
+        {
+            AbleDance = true;
+            Debug.Log("goal");
+        }
+    }
+
+
     private IEnumerator wait()
     {
-
+        
+        
         yield return new WaitForSeconds(2f);
-        pm.EnableMoving();
+        if (AbleDance)
+        {
+            pm.EnableMoving();
+            goal.GetComponent<GameHandlerScript>()
+                .focusCamera(transform.GetChild(1).transform.position,
+                    transform.GetChild(1).transform.rotation);
+            WinOrLose.SetBool("isDancing",true);
+        }
+        else
+        {
+            pm.EnableMoving();
+            goal.GetComponent<GameHandlerScript>().cameraFollow();
+        }
+
         Target.SetActive(false);
+        objective.SetActive(false);
         this.gameObject.SetActive(false);
-        goal.GetComponent<GameHandlerScript>().cameraFollow();
+        
     }
 
     private void Start()
