@@ -9,6 +9,7 @@ public class PenaltyShoot : MonoBehaviour
     [SerializeField] private GameObject Target;
     [SerializeField] private GameObject Target2;
     private Boolean ableShoot = true;
+    [SerializeField] private Animator WinOrLose;
     [SerializeField] private GameObject goal;
     [SerializeField] private float power = 50f;
     public PlayerMove pm;
