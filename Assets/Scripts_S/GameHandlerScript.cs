@@ -8,9 +8,10 @@ public class GameHandlerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] menuObjects;
     [SerializeField] GameObject youLoseText;
+    [SerializeField] GameObject youWinText;
     [SerializeField] GameObject mainCanvas;
-    [SerializeField] float loseAnimationDuration = 0.5f;
-    [SerializeField] float loseDelayToMenu = 1.5f;
+    [SerializeField] float textAnimationDuration = 0.5f;
+    [SerializeField] float textDelayToMenu = 2.5f;
     [SerializeField] AudioSource loseAudio;
     [SerializeField] AudioSource winAudio;
     Quaternion cameraQuaternion;
@@ -85,12 +86,17 @@ public class GameHandlerScript : MonoBehaviour
 
     public void lose()
     {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for(int i=0; i< guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardBehaviour>().stop();
+        }
         GameObject text = Instantiate(youLoseText, mainCanvas.transform);
         loseAudio.Play();
-        StartCoroutine(loseRoutine(text));
+        StartCoroutine(textRoutine(text));
     }
 
-    IEnumerator loseRoutine(GameObject loseText)
+    IEnumerator textRoutine(GameObject loseText)
     {
         float t = 0f;
         Vector3 initialPos = loseText.transform.localPosition;
@@ -100,7 +106,7 @@ public class GameHandlerScript : MonoBehaviour
                 initialPos.z);
         while (t < 1)
         {
-            t += Time.deltaTime / loseAnimationDuration;
+            t += Time.deltaTime / textAnimationDuration;
             loseText.transform.localPosition = new Vector3(
                 initialPos.x,
                 Mathf.Lerp(900, initialPos.y, t),
@@ -110,11 +116,30 @@ public class GameHandlerScript : MonoBehaviour
         t = 0f;
         while(t < 1)
         {
-            t += Time.deltaTime / loseDelayToMenu;
+            t += Time.deltaTime / textDelayToMenu;
             yield return null;
         }
         SceneManager.LoadScene("MainMenu");
     }
+    
+    public void win()
+    {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for (int i = 0; i < guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardBehaviour>().stop();
+        }
+        GameObject text = Instantiate(youWinText, mainCanvas.transform);
+        winAudio.Play();
+        StartCoroutine(textRoutine(text));
+        int level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
+        int playerLevel = PlayerPrefs.GetInt("currentLevel");
+        if(playerLevel < level)
+        {
+            PlayerPrefs.SetInt("currentLevel", level);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

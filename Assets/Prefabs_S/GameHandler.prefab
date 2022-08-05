@@ -51,9 +51,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   youLoseText: {fileID: 3654603341898825981, guid: fce05c5d0be43a847a029e8600ca03e0, type: 3}
+  youWinText: {fileID: 3654603341898825981, guid: 0e165fe1f2c05094eb883e69a5a6180a, type: 3}
   mainCanvas: {fileID: 0}
-  loseAnimationDuration: 0.5
-  loseDelayToMenu: 1.5
+  textAnimationDuration: 0.5
+  textDelayToMenu: 2.5
   loseAudio: {fileID: 3380435629752694349}
   winAudio: {fileID: 1443006804197076610}
 --- !u!82 &3380435629752694349
