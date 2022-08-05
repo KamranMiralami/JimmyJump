@@ -35,6 +35,7 @@ public class PenaltyShoot : MonoBehaviour
     {
         if (other.CompareTag("Win"))
         {
+            
             joystick.SetActive(false);
             goal.GetComponent<GameHandlerScript>()
                 .focusCamera(winorlosecam.transform.position,
