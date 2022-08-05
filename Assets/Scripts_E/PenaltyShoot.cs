@@ -12,6 +12,7 @@ public class PenaltyShoot : MonoBehaviour
     private Boolean ableShoot = true, AbleDance = false;
     [SerializeField] private Animator WinOrLose;
     [SerializeField] private GameObject goal;
+    [SerializeField] private GameObject joystick;
     [SerializeField] private GameObject winorlosecam;
     [SerializeField] private float power = 50f;
     [SerializeField] private GameObject player;
@@ -34,6 +35,7 @@ public class PenaltyShoot : MonoBehaviour
     {
         if (other.CompareTag("Win"))
         {
+            joystick.SetActive(false);
             goal.GetComponent<GameHandlerScript>()
                 .focusCamera(winorlosecam.transform.position,
                     winorlosecam.transform.rotation);
@@ -43,7 +45,7 @@ public class PenaltyShoot : MonoBehaviour
         }
         if (other.CompareTag("Lose"))
         {
-            
+            joystick.SetActive(false);
             goal.GetComponent<GameHandlerScript>()
                 .focusCamera(winorlosecam.transform.position,
                     winorlosecam.transform.rotation);

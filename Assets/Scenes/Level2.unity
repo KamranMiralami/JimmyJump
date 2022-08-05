@@ -13932,6 +13932,7 @@ MonoBehaviour:
   Target2: {fileID: 892804005}
   WinOrLose: {fileID: 1506788796}
   goal: {fileID: 851412838}
+  joystick: {fileID: 1002446924}
   winorlosecam: {fileID: 1360921346}
   power: 50
   player: {fileID: 1844437278}
@@ -14573,6 +14574,7 @@ MonoBehaviour:
   Target2: {fileID: 892804005}
   WinOrLose: {fileID: 0}
   goal: {fileID: 0}
+  joystick: {fileID: 0}
   winorlosecam: {fileID: 0}
   power: 50
   player: {fileID: 0}
@@ -15558,7 +15560,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 20, z: 0.5}
+  m_Size: {x: 100, y: 20, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1565470962
 Transform:
@@ -15568,7 +15570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565470960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.43, y: 0, z: 49.78}
+  m_LocalPosition: {x: 19.43, y: 0, z: 49.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
