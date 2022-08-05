@@ -34,7 +34,6 @@ public class PenaltyShoot : MonoBehaviour
     {
         if (other.CompareTag("Win"))
         {
-            player.transform.position += new Vector3(0, player.transform.localScale.y, 0);
             goal.GetComponent<GameHandlerScript>()
                 .focusCamera(winorlosecam.transform.position,
                     winorlosecam.transform.rotation);
@@ -48,7 +47,8 @@ public class PenaltyShoot : MonoBehaviour
             goal.GetComponent<GameHandlerScript>()
                 .focusCamera(winorlosecam.transform.position,
                     winorlosecam.transform.rotation);
-            Debug.Log("goal");
+            WinOrLose.SetBool("isLost",true);
+            Debug.Log("not goal");
             StartCoroutine(lost());
         }
     }
