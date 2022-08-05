@@ -17,7 +17,7 @@ public class BallImpactHandlerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball"))
+        if (other.gameObject.CompareTag("Ball") && !isDeathPlayed)
         {
             if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= ballMinSpeed)
             {
@@ -31,12 +31,11 @@ public class BallImpactHandlerScript : MonoBehaviour
                     isDeathPlayed = true;
                     deathAudio.Play();
                 }
-                transform.parent.GetComponent<GuardBehaviour>().canMove = false;
-                transform.parent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                transform.parent.GetComponent<GuardBehaviour>().stop();
                 StartCoroutine(resizeCollider());
             }
         }
-        else if (other.gameObject.CompareTag("Player"))
+        else if (other.gameObject.CompareTag("Player") && !isDeathPlayed)
         {
             transform.parent.gameObject.GetComponent<GuardBehaviour>().stop();
             modelAnimation.SetBool("isPunching", true);

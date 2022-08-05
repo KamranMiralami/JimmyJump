@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class SurviveObjective : MonoBehaviour
 {
+    public GameObject compass;
     public GameObject damageIndicatorHandler;
     public GameObject WinTrigger;
     public int duration;
@@ -17,6 +18,7 @@ public class SurviveObjective : MonoBehaviour
     private void Start()
     {
         WinTrigger.SetActive(false);
+        compass.SetActive(false);
         upperSpawn = transform.GetChild(0).gameObject;
         lowerSpawn = transform.GetChild(1).gameObject;
         surviveText.text = duration.ToString();
@@ -46,6 +48,7 @@ public class SurviveObjective : MonoBehaviour
     }
     public IEnumerator ShowExitMessage(GameObject go)
     {
+        compass.SetActive(true);
         WinTrigger.SetActive(true);
         if (go.activeSelf == false)
         {
