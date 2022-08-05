@@ -5,11 +5,13 @@
 
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace GameAnalyticsSDK.Events
 {
     public class GA_SpecialEvents : MonoBehaviour
     {
+       
         /*[HideInInspector]
         public bool SubmitFpsAverage;
         [HideInInspector]
@@ -40,6 +42,7 @@ namespace GameAnalyticsSDK.Events
 
         public void Start ()
         {
+            GameAnalytics.Initialize();
             StartCoroutine(SubmitFPSRoutine());
             StartCoroutine(CheckCriticalFPSRoutine());
         }
