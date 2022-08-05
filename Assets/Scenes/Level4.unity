@@ -3109,7 +3109,17 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
+      objectReference: {fileID: 9100000, guid: eb34a8e4c3bba7045974ac2d84594a27, type: 2}
+    - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'B-thigh.L'\n\tTransform 'B-forearm.R'\n\tTransform
+        'B-upper_arm.L'\n\tTransform 'B-shoulder.R'\n\tTransform 'B-upperChest'\n\tTransform
+        'B-hand.L'\n\tTransform 'B-shin.R'\n\tTransform 'B-upper_arm.R'\n\tTransform
+        'B-head'\n\tTransform 'B-forearm.L'\n\tand more ...\n\tFrom animation clip
+        'Silly Dancing'"
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -3756,7 +3766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5813a4f0f213842b0a29559701e8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 1769257245}
   joystick: {fileID: 1651358879}
   anim: {fileID: 1506788796}
   characterController: {fileID: 1844437281}
