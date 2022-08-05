@@ -31,6 +31,8 @@ public class PatternHandler : MonoBehaviour
             StartCoroutine(won());
             finished = false;
         }
+        if (num >= patterns.Length)
+            return;
         if (patterns[num].GetComponent<PatternsBehaviour>().triggered == true)
         {
             if (enable)

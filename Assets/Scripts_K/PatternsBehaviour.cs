@@ -26,4 +26,18 @@ public class PatternsBehaviour : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!triggered)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (gameObject == handler.patterns[handler.num])
+                {
+                    renderer.material.SetColor("_Color", endColor);
+                    triggered = true;
+                }
+            }
+        }
+    }
 }
