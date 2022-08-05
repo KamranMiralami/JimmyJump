@@ -17,7 +17,7 @@ public class BallImpactHandlerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball"))
+        if (other.gameObject.CompareTag("Ball") && !isDeathPlayed)
         {
             if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= ballMinSpeed)
             {
