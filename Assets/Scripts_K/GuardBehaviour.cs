@@ -59,6 +59,7 @@ public class GuardBehaviour : MonoBehaviour
         modelAnimation.SetBool("isRunning", false);
         gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         Quaternion temp = gameObject.transform.rotation;
+        runAudio.Stop();
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, temp.eulerAngles.y, temp.eulerAngles.z));
     }
 }

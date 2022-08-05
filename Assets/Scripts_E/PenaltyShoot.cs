@@ -12,7 +12,10 @@ public class PenaltyShoot : MonoBehaviour
     private Boolean ableShoot = true, AbleDance = false;
     [SerializeField] private Animator WinOrLose;
     [SerializeField] private GameObject goal;
+    [SerializeField] private GameObject winorlosecam;
     [SerializeField] private float power = 50f;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameHandlerScript gameHandlerScript;
     public PlayerMove pm;
     void Update()
     {
@@ -24,50 +27,65 @@ public class PenaltyShoot : MonoBehaviour
             
             
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Win"))
         {
-            AbleDance = true;
+            player.transform.position += new Vector3(0, player.transform.localScale.y, 0);
+            goal.GetComponent<GameHandlerScript>()
+                .focusCamera(winorlosecam.transform.position,
+                    winorlosecam.transform.rotation);
+            WinOrLose.SetBool("isDancing",true);
             Debug.Log("goal");
+            StartCoroutine(won());
+        }
+        if (other.CompareTag("Lose"))
+        {
+            
+            goal.GetComponent<GameHandlerScript>()
+                .focusCamera(winorlosecam.transform.position,
+                    winorlosecam.transform.rotation);
+            Debug.Log("goal");
+            StartCoroutine(lost());
         }
     }
 
 
     private IEnumerator wait()
     {
-        
-        
         yield return new WaitForSeconds(2f);
-        if (AbleDance)
-        {
-            pm.EnableMoving();
-            goal.GetComponent<GameHandlerScript>()
-                .focusCamera(transform.GetChild(1).transform.position,
-                    transform.GetChild(1).transform.rotation);
-            WinOrLose.SetBool("isDancing",true);
-        }
-        else
-        {
-            pm.EnableMoving();
-            goal.GetComponent<GameHandlerScript>().cameraFollow();
-        }
-
         Target.SetActive(false);
         objective.SetActive(false);
-        this.gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+    }
+    
+    private IEnumerator lost()
+    {
+        yield return new WaitForSeconds(4f);
+        gameHandlerScript.lose();
+    
+    }
+    
+    private IEnumerator won()
+    {
         
+        yield return new WaitForSeconds(4f);
+        
+        gameHandlerScript.win();
     }
 
     private void Start()
     {
+        winorlosecam.transform.position = player.transform.position + Vector3.forward * 5f + Vector3.up * 1f;
         pm.DisableMoving();
         Target.SetActive(true);
         var position = Target2.transform.position;
         Target.transform.DOMove(new Vector3
-            (position.x, position.y, position.z), 2f)
+            (position.x, position.y, position.z), 1f)
             .SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
     }
     private void Shoot()
