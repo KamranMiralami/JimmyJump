@@ -7,6 +7,13 @@ using UnityEngine.UI;
 public class GameHandlerScript : MonoBehaviour
 {
     [SerializeField] GameObject[] menuObjects;
+    [SerializeField] GameObject youLoseText;
+    [SerializeField] GameObject youWinText;
+    [SerializeField] GameObject mainCanvas;
+    [SerializeField] float textAnimationDuration = 0.5f;
+    [SerializeField] float textDelayToMenu = 2.5f;
+    [SerializeField] AudioSource loseAudio;
+    [SerializeField] AudioSource winAudio;
     Quaternion cameraQuaternion;
 
     // Start is called before the first frame update
@@ -76,6 +83,63 @@ public class GameHandlerScript : MonoBehaviour
         // }
         // cameraFollow();
     }
+
+    public void lose()
+    {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for(int i=0; i< guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardBehaviour>().stop();
+        }
+        GameObject text = Instantiate(youLoseText, mainCanvas.transform);
+        loseAudio.Play();
+        StartCoroutine(textRoutine(text));
+    }
+
+    IEnumerator textRoutine(GameObject loseText)
+    {
+        float t = 0f;
+        Vector3 initialPos = loseText.transform.localPosition;
+        loseText.transform.localPosition = new Vector3(
+                initialPos.x,
+                900,
+                initialPos.z);
+        while (t < 1)
+        {
+            t += Time.deltaTime / textAnimationDuration;
+            loseText.transform.localPosition = new Vector3(
+                initialPos.x,
+                Mathf.Lerp(900, initialPos.y, t),
+                initialPos.z);
+            yield return null;
+        }
+        t = 0f;
+        while(t < 1)
+        {
+            t += Time.deltaTime / textDelayToMenu;
+            yield return null;
+        }
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    public void win()
+    {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for (int i = 0; i < guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardBehaviour>().stop();
+        }
+        GameObject text = Instantiate(youWinText, mainCanvas.transform);
+        winAudio.Play();
+        StartCoroutine(textRoutine(text));
+        int level = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
+        int playerLevel = PlayerPrefs.GetInt("currentLevel");
+        if(playerLevel < level)
+        {
+            PlayerPrefs.SetInt("currentLevel", level);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
