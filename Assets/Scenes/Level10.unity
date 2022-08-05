@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43913996, g: 0.48732668, b: 0.56798357, a: 1}
+  m_IndirectSpecularColor: {r: 0.4416289, g: 0.49051255, b: 0.5705111, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7189,6 +7189,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6872d99f22ae9ff4eb25de3fe433c641, type: 3}
+--- !u!1 &1244396693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8718875641642117545, guid: 6872d99f22ae9ff4eb25de3fe433c641, type: 3}
+  m_PrefabInstance: {fileID: 1244396692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1250855120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9793,7 +9798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5813a4f0f213842b0a29559701e8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 1244396693}
   joystick: {fileID: 1467335633}
   anim: {fileID: 1204044896}
   characterController: {fileID: 1599753567}
