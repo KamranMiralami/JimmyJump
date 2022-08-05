@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 public class SurviveObjective : MonoBehaviour
 {
+    public GameObject damageIndicatorHandler;
+    public GameObject WinTrigger;
     public int duration;
     public TextMeshProUGUI surviveText;
     public GameObject tutorialMessage;
@@ -14,6 +16,7 @@ public class SurviveObjective : MonoBehaviour
     public GameObject Guard;
     private void Start()
     {
+        WinTrigger.SetActive(false);
         upperSpawn = transform.GetChild(0).gameObject;
         lowerSpawn = transform.GetChild(1).gameObject;
         surviveText.text = duration.ToString();
@@ -43,6 +46,7 @@ public class SurviveObjective : MonoBehaviour
     }
     public IEnumerator ShowExitMessage(GameObject go)
     {
+        WinTrigger.SetActive(true);
         if (go.activeSelf == false)
         {
             go.SetActive(true);
@@ -78,5 +82,6 @@ public class SurviveObjective : MonoBehaviour
             go=Instantiate(Guard, lowerSpawn.transform.position, lowerSpawn.transform.rotation);
         }
         go.GetComponent<GuardBehaviour>().chasingGO = player;
+        damageIndicatorHandler.GetComponent<DamageIndicatorScript>().addGuard(go);
     }
 }

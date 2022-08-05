@@ -8,18 +8,18 @@ public class DamageIndicatorScript : MonoBehaviour
     [SerializeField] float maxDistance = 5;
     [SerializeField] float maxScaleMultiplier = 1;
     Vector3 initialScale;
-    GameObject[] guards;
-    GameObject[] indicators;
+    List<GameObject> guards;
+    List<GameObject> indicators;
 
     // Start is called before the first frame update
     void Start()
     {
-        guards = GameObject.FindGameObjectsWithTag("Guard");
+        guards = new List<GameObject> (GameObject.FindGameObjectsWithTag("Guard"));
         initialScale = indicatorSample.transform.localScale;
-        indicators = new GameObject[guards.Length];
-        for(int i = 0; i < guards.Length; i++)
+        indicators = new List<GameObject> ();
+        for(int i = 0; i < guards.Count; i++)
         {
-            indicators[i] = Instantiate(indicatorSample);
+            indicators.Add(Instantiate(indicatorSample));
             indicators[i].transform.parent = gameObject.transform;
             Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
             dir.y = 0;
@@ -40,7 +40,7 @@ public class DamageIndicatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < guards.Length; i++)
+        for (int i = 0; i < guards.Count; i++)
         {
             Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
             dir.y = 0;
@@ -49,5 +49,18 @@ public class DamageIndicatorScript : MonoBehaviour
             indicators[i].transform.position = pos;
             indicators[i].transform.localScale = scaleOfIndicator(guards[i].transform.position);
         }
+    }
+
+    public void addGuard(GameObject guard)
+    {
+        guards.Add(guard);
+        indicators.Add(Instantiate(indicatorSample));
+        indicators[indicators.Count-1].transform.parent = gameObject.transform;
+        Vector3 dir = Vector3.Normalize(guard.transform.position - transform.parent.position);
+        dir.y = 0;
+        indicators[indicators.Count - 1].transform.forward = dir;
+        Vector3 pos = transform.position + dir;
+        indicators[indicators.Count - 1].transform.position = pos;
+        indicators[indicators.Count - 1].transform.localScale = scaleOfIndicator(guard.transform.position);
     }
 }
