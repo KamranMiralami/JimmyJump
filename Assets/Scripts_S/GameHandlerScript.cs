@@ -43,6 +43,8 @@ public class GameHandlerScript : MonoBehaviour
     public void toMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        GameAnalyticsSDK.GameAnalytics.Initialize();
+        
     }
 
     public void cameraUnfollow()
