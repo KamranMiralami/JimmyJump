@@ -37,11 +37,14 @@ public class BallImpactHandlerScript : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Player") && !isDeathPlayed)
         {
-            transform.parent.gameObject.GetComponent<GuardBehaviour>().stop();
-            modelAnimation.SetBool("isPunching", true);
-            other.gameObject.GetComponent<PlayerMove>().Death(
-                gameObject.transform.position - other.gameObject.transform.position);
-            StartCoroutine(delayedFalse());
+            if (transform.parent.GetComponent<GuardBehaviour>().canMove)
+            {
+                transform.parent.gameObject.GetComponent<GuardBehaviour>().stop();
+                modelAnimation.SetBool("isPunching", true);
+                other.gameObject.GetComponent<PlayerMove>().Death(
+                    gameObject.transform.position - other.gameObject.transform.position);
+                StartCoroutine(delayedFalse());
+            }
         }
     }
 

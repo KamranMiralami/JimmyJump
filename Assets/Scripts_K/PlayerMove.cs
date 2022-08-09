@@ -62,11 +62,11 @@ public class PlayerMove : MonoBehaviour
         gameObject.transform.forward = forward;
         anim.SetBool("isDead", true);
         DisableMoving();
-        StartCoroutine(playerDeathFall(1.5f));
+        StartCoroutine(playerDeathFall(1.5f, transform.position.y - (transform.localScale.y / 2) - 0.2f));
         gameHandler.GetComponent<GameHandlerScript>().lose();
     }
 
-    IEnumerator playerDeathFall(float duration)
+    IEnumerator playerDeathFall(float duration, float dest)
     {
         float t = 0f;
         Vector3 initialPos = gameObject.transform.position;
@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
             t += Time.deltaTime / duration;
             gameObject.transform.position = new Vector3(
                 initialPos.x,
-                Mathf.Lerp(initialPos.y, -0.7f, t),
+                Mathf.Lerp(initialPos.y, dest, t),
                 initialPos.z);
             yield return null;
         }
