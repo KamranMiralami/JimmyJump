@@ -12,6 +12,7 @@ public class MainMenuHandlerScript : MonoBehaviour
     [SerializeField] Image[] uiImages;
     [SerializeField] TextMeshProUGUI[] uiTexts;
     [SerializeField] float animationDuration = 0.1f;
+    [SerializeField] Button playButton;
     int index = 0;
     int level = 0;
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class MainMenuHandlerScript : MonoBehaviour
         highScores.scores = new int[] { 1, 2, 3 };
         PlayerPrefs.SetString("scores", JsonUtility.ToJson(highScores));
         uiTexts[0].text = "" + (level + 1);
+        playButton.interactable = true;
     }
 
     public void Levels()
@@ -43,6 +45,14 @@ public class MainMenuHandlerScript : MonoBehaviour
     {
         level = (level + 1) % maxLevel;
         uiTexts[1 - index].text = "" + (level + 1);
+        if(PlayerPrefs.GetInt("currentLevel") < level)
+        {
+            playButton.interactable = false;
+        }
+        else
+        {
+            playButton.interactable = true;
+        }
         Vector3 temp = uiTexts[1 - index].rectTransform.anchoredPosition3D;
         temp.x = uiTexts[index].rectTransform.sizeDelta.x;
         uiTexts[1 - index].rectTransform.anchoredPosition3D = temp;
@@ -95,6 +105,14 @@ public class MainMenuHandlerScript : MonoBehaviour
             level += maxLevel;
         }
         uiTexts[1 - index].text = "" + (level + 1);
+        if (PlayerPrefs.GetInt("currentLevel") < level)
+        {
+            playButton.interactable = false;
+        }
+        else
+        {
+            playButton.interactable = true;
+        }
         Vector3 temp = uiTexts[1 - index].rectTransform.anchoredPosition3D;
         temp.x = -1 * uiTexts[index].rectTransform.sizeDelta.x;
         uiTexts[1 - index].rectTransform.anchoredPosition3D = temp;

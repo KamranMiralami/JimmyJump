@@ -1102,6 +1102,7 @@ MonoBehaviour:
   - {fileID: 1026244725}
   - {fileID: 1462127553}
   animationDuration: 0.1
+  playButton: {fileID: 1725323433}
 --- !u!4 &502102728
 Transform:
   m_ObjectHideFlags: 0
