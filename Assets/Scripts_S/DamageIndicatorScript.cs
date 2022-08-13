@@ -40,14 +40,30 @@ public class DamageIndicatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        List<int> temp = new List<int>();
         for (int i = 0; i < guards.Count; i++)
         {
-            Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
-            dir.y = 0;
-            indicators[i].transform.forward = dir;
-            Vector3 pos = transform.position + dir;
-            indicators[i].transform.position = pos;
-            indicators[i].transform.localScale = scaleOfIndicator(guards[i].transform.position);
+            if (guards[i].GetComponentInChildren<BallImpactHandlerScript>().isDeathPlayed)
+            {
+                temp.Add(i);
+            }
+            else
+            {
+                Vector3 dir = Vector3.Normalize(guards[i].transform.position - transform.parent.position);
+                dir.y = 0;
+                indicators[i].transform.forward = dir;
+                Vector3 pos = transform.position + dir;
+                indicators[i].transform.position = pos;
+                indicators[i].transform.localScale = scaleOfIndicator(guards[i].transform.position);
+            }
+        }
+        GameObject tempObject;
+        for (int i=0; i<temp.Count; i++)
+        {
+            guards.RemoveAt(temp[i]);
+            tempObject = indicators[temp[i]];
+            indicators.RemoveAt(temp[i]);
+            Destroy(tempObject);
         }
     }
 

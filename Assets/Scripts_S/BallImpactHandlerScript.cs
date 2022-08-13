@@ -7,7 +7,7 @@ public class BallImpactHandlerScript : MonoBehaviour
     [SerializeField] Animator modelAnimation;
     [SerializeField] float ballMinSpeed = 1f;
     public AudioSource deathAudio;
-    bool isDeathPlayed = false;
+    public bool isDeathPlayed = false;
     public KnockOutBehaviour ko;
     // Start is called before the first frame update
     void Start()
