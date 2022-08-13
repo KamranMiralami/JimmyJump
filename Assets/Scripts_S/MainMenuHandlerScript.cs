@@ -17,15 +17,16 @@ public class MainMenuHandlerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(levelImages.Length > 0)
+        level = PlayerPrefs.GetInt("currentLevel");
+        if (levelImages.Length > level)
         {
-            uiImages[index].sprite = levelImages[0];
+            uiImages[index].sprite = levelImages[level];
         }
         HighScores highScores = new HighScores();
         highScores.names = new string[] { "me", "you", "them" };
         highScores.scores = new int[] { 1, 2, 3 };
         PlayerPrefs.SetString("scores", JsonUtility.ToJson(highScores));
-        uiTexts[0].text = "1";
+        uiTexts[0].text = "" + (level + 1);
     }
 
     public void Levels()
