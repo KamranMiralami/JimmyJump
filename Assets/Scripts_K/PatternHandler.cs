@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PatternHandler : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PatternHandler : MonoBehaviour
     [SerializeField] private GameObject[] guards;
     public int num = 0;
     public bool finished;
+    public TextMeshProUGUI text;
     void Start()
     {
         guards = GameObject.FindGameObjectsWithTag("Guard");
@@ -38,6 +40,7 @@ public class PatternHandler : MonoBehaviour
             if (enable)
             {
                 num++;
+                text.text = num.ToString() + "/" + patterns.Length;
                 if (num == patterns.Length )
 
                 {
