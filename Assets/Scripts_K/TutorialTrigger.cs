@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.UI;
+
 public class TutorialTrigger : MonoBehaviour
 {
     public GameObject tutorialText;
@@ -25,8 +27,13 @@ public class TutorialTrigger : MonoBehaviour
         {
             go.SetActive(true);
         }
+        if(go.GetComponent<Image>()!=null)
+        {
+            go = go.transform.GetChild(0).gameObject;
+        }
         Vector3 start = go.transform.GetChild(0).transform.position;
         Vector3 end = go.transform.GetChild(1).transform.position;
+        go = go.transform.parent.gameObject;
         go.transform.position = start;
         float durationStart = 0;
         while (go.transform.position != end)
