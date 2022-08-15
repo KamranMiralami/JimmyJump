@@ -42,13 +42,16 @@ public class TutorialTrigger : MonoBehaviour
             durationStart += 0.02f;
             go.transform.position = Vector3.Lerp(start, end, durationStart / tutorialPivotDuration);
         }
-        yield return new WaitForSeconds(tutorialStayDuration);
-        durationStart = 0f;
-        while (go.transform.position != start)
+        if (tutorialStayDuration >= 0)
         {
-            yield return new WaitForSeconds(0.02f);
-            durationStart += 0.02f;
-            go.transform.position = Vector3.Lerp(end, start, durationStart / tutorialPivotBackDuration);
+            yield return new WaitForSeconds(tutorialStayDuration);
+            durationStart = 0f;
+            while (go.transform.position != start)
+            {
+                yield return new WaitForSeconds(0.02f);
+                durationStart += 0.02f;
+                go.transform.position = Vector3.Lerp(end, start, durationStart / tutorialPivotBackDuration);
+            }
         }
     }
 }
