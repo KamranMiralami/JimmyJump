@@ -35,13 +35,13 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            cameraOffsetPercentage = Mathf.Clamp01(cameraOffsetPercentage + Time.deltaTime * 0.025f);
+            cameraOffsetPercentage = Mathf.Clamp01(cameraOffsetPercentage + Time.deltaTime * 0.002f);
         }
         //Debug.LogWarning(cameraOffsetPercentage);
-        transform.forward = Vector3.Lerp(transform.forward, direction, 150f * Time.deltaTime);
+        transform.forward = Vector3.Lerp(transform.forward, direction, 15f * Time.deltaTime);
         characterController.SimpleMove(direction.normalized * speed);
-        cameraFollow.offset.x = Mathf.Lerp(cameraFollow.offset.x, cf.x + direction.x * 3, cameraOffsetPercentage);
-        cameraFollow.offset.z = Mathf.Lerp(cameraFollow.offset.z, cf.z + direction.z * 3, cameraOffsetPercentage);
+        cameraFollow.offset.x = Mathf.Lerp(cameraFollow.offset.x, cf.x + direction.x * 1.5f, cameraOffsetPercentage);
+        cameraFollow.offset.z = Mathf.Lerp(cameraFollow.offset.z, cf.z + direction.z * 1.5f, cameraOffsetPercentage);
     }
     public void EnableMoving()
     {
