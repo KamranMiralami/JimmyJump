@@ -19,6 +19,10 @@ public class MainMenuHandlerScript : MonoBehaviour
     void Start()
     {
         level = PlayerPrefs.GetInt("currentLevel");
+        if(level >= maxLevel)
+        {
+            level = maxLevel - 1;
+        }
         if (levelImages.Length > level)
         {
             uiImages[index].sprite = levelImages[level];
