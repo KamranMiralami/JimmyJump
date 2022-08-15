@@ -42,6 +42,7 @@ public class GameHandlerScript : MonoBehaviour
 
     public void toMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
         GameAnalyticsSDK.GameAnalytics.Initialize();
         
