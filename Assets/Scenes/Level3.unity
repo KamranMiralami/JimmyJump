@@ -283,7 +283,7 @@ RectTransform:
   m_GameObject: {fileID: 210465153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.32, y: 1, z: 1}
+  m_LocalScale: {x: 7.8, y: 1.54, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1730479846}
@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 504, y: -271}
+  m_AnchoredPosition: {x: 327.03, y: -278.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &210465155
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 96897035, guid: 2676ff5c94fc9f1489d59bf570d079e3, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5
 --- !u!222 &210465156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 96897035, guid: 2676ff5c94fc9f1489d59bf570d079e3, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5
 --- !u!222 &338710291
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -915,7 +915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 210465153}
-  tutorialPivotDuration: 2
+  delay: 21
+  tutorialPivotDuration: 1
   tutorialStayDuration: 30
   tutorialPivotBackDuration: 1
 --- !u!65 &457891041
@@ -981,7 +982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.369995, y: 0}
+  m_AnchoredPosition: {x: 7.57, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &516871511
@@ -1243,6 +1244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 338710288}
+  delay: 0
   tutorialPivotDuration: 1
   tutorialStayDuration: 20
   tutorialPivotBackDuration: 1
@@ -1508,10 +1510,11 @@ MonoBehaviour:
   WinTrigger: {fileID: 1792779329}
   duration: 20
   surviveText: {fileID: 516871512}
-  tutorialMessage: {fileID: 1730479845}
+  tutorialMessage: {fileID: 210465153}
   spawnInterval: 1
   player: {fileID: 1844437278}
   Guard: {fileID: 1595542075}
+  gameEndTrigger: {fileID: 1792779329}
 --- !u!4 &982980070
 Transform:
   m_ObjectHideFlags: 0
@@ -2452,7 +2455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SURVIVE FOR         SECONDS!
+  m_text: SURVIVE FOR        SECONDS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81e82603ea916ee43b8d31dec7803cca, type: 2}
   m_sharedMaterial: {fileID: -1061287397803047782, guid: 81e82603ea916ee43b8d31dec7803cca, type: 2}
@@ -2461,8 +2464,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190329
-  m_fontColor: {r: 0.97647065, g: 0, b: 0, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3573,7 +3576,7 @@ RectTransform:
   m_GameObject: {fileID: 1730479845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.088339224, y: 1, z: 1}
+  m_LocalScale: {x: 0.088339224, y: 0.64935064, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 156145443}
@@ -3583,7 +3586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: 1700.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730479847
@@ -3832,7 +3835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1792779330
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -3401,6 +3401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1646691835}
+  delay: 0
   tutorialPivotDuration: 1
   tutorialStayDuration: 500
   tutorialPivotBackDuration: 2
@@ -9274,8 +9275,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 96897035, guid: 2676ff5c94fc9f1489d59bf570d079e3, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9283,7 +9284,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5
 --- !u!222 &1646691838
 CanvasRenderer:
   m_ObjectHideFlags: 0
