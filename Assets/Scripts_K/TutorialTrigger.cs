@@ -8,13 +8,13 @@ public class TutorialTrigger : MonoBehaviour
 {
     public GameObject tutorialText;
     bool triggered = false;
+    public float delay = 0f;
     private void OnTriggerEnter(Collider other)
     {
         if(!triggered)
             if (other.gameObject.CompareTag("Player"))
             {
                 triggered = true;
-                tutorialText.SetActive(true);
                 StartCoroutine(ShowTutorialMessage(tutorialText));
             }
     }
@@ -23,7 +23,8 @@ public class TutorialTrigger : MonoBehaviour
     public float tutorialPivotBackDuration;
     public IEnumerator ShowTutorialMessage(GameObject go)
     {
-        if(go.activeSelf==false)
+        yield return new WaitForSeconds(delay);
+        if (go.activeSelf==false)
         {
             go.SetActive(true);
         }
