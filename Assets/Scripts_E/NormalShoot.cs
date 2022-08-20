@@ -9,7 +9,7 @@ public class NormalShoot : MonoBehaviour
     [SerializeField] AudioSource impactAudio;
     [SerializeField] float ballMinSpeed = 3f;
     [SerializeField] float minTimeBetweenSounds = 0.3f;
-    System.DateTime lastTime;
+    float lastTime;
     bool firstImpact = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -68,12 +68,12 @@ public class NormalShoot : MonoBehaviour
             {
                 impactAudio.Play();
                 firstImpact = true;
-                lastTime = System.DateTime.UtcNow;
+                lastTime = Time.time;
             }
-            else if((System.DateTime.UtcNow - lastTime).Seconds >= minTimeBetweenSounds)
+            else if(Time.time - lastTime >= minTimeBetweenSounds)
             {
                 impactAudio.Play();
-                lastTime = System.DateTime.UtcNow;
+                lastTime = Time.time;
             }
             //GetComponent<Rigidbody>().AddForce(transform.up * 500f * Time.deltaTime);
         }
