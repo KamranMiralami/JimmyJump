@@ -6,6 +6,7 @@ using UnityEngine;
 public class NormalShoot : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
+    [SerializeField] AudioSource impactAudio;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -59,7 +60,12 @@ public class NormalShoot : MonoBehaviour
             //GetComponent<Rigidbody>().AddForce(dir* 1500f * Time.deltaTime);*/
 
             GetComponent<Rigidbody>().AddForce((transform.position - _player.transform.position) * 1500f * Time.deltaTime);
+            impactAudio.Play();
             //GetComponent<Rigidbody>().AddForce(transform.up * 500f * Time.deltaTime);
+        }
+        else if (other.gameObject.CompareTag("Guard"))
+        {
+            impactAudio.Play();
         }
     }
 }
