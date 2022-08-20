@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallImpactHandlerScript : MonoBehaviour
 {
     [SerializeField] Animator modelAnimation;
-    [SerializeField] float ballMinSpeed = 1f;
+    [SerializeField] float ballMinSpeed = 3f;
     public AudioSource deathAudio;
     public bool isDeathPlayed = false;
     public KnockOutBehaviour ko;

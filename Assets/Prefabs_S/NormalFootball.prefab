@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   impactAudio: {fileID: 44009848801385373}
+  ballMinSpeed: 3
+  minTimeBetweenSounds: 0.3
 --- !u!135 &357793847226245228
 SphereCollider:
   m_ObjectHideFlags: 0

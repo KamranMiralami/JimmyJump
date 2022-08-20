@@ -7,6 +7,10 @@ public class NormalShoot : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] AudioSource impactAudio;
+    [SerializeField] float ballMinSpeed = 3f;
+    [SerializeField] float minTimeBetweenSounds = 0.3f;
+    System.DateTime lastTime;
+    bool firstImpact = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -60,12 +64,28 @@ public class NormalShoot : MonoBehaviour
             //GetComponent<Rigidbody>().AddForce(dir* 1500f * Time.deltaTime);*/
 
             GetComponent<Rigidbody>().AddForce((transform.position - _player.transform.position) * 1500f * Time.deltaTime);
-            impactAudio.Play();
+            if(!firstImpact)
+            {
+                impactAudio.Play();
+                firstImpact = true;
+                lastTime = System.DateTime.UtcNow;
+            }
+            else if((System.DateTime.UtcNow - lastTime).Seconds >= minTimeBetweenSounds)
+            {
+                impactAudio.Play();
+                lastTime = System.DateTime.UtcNow;
+            }
             //GetComponent<Rigidbody>().AddForce(transform.up * 500f * Time.deltaTime);
         }
         else if (other.gameObject.CompareTag("Guard"))
         {
-            impactAudio.Play();
+            if (gameObject.GetComponent<Rigidbody>().velocity.magnitude >= ballMinSpeed)
+            {
+                if(!other.gameObject.GetComponentInChildren<BallImpactHandlerScript>().isDeathPlayed)
+                {
+                    impactAudio.Play();
+                }
+            }
         }
     }
 }

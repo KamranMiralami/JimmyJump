@@ -1316,6 +1316,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
 --- !u!1001 &797821794
@@ -2217,6 +2221,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
 --- !u!1 &1334538632
@@ -3596,6 +3604,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
 --- !u!1 &1699259615
@@ -3693,6 +3705,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
 --- !u!1001 &1707350375
@@ -3754,6 +3770,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
 --- !u!1 &1832148909
@@ -4311,5 +4331,9 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1599753564}
+    - target: {fileID: 357793847226245229, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
+      propertyPath: minTimeBetweenSounds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac887c37697a0de40b98cb7b8a1863f4, type: 3}
