@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] GameObject gameHandler;
-    public FixedJoystick joystick;
+    public VariableJoystick joystick;
     public Animator anim;
     public CharacterController characterController;
     public float speed=5f;
