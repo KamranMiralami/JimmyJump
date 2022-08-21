@@ -26,11 +26,7 @@ public class SoccerPlayerBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isTriggered)
         {
-            GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
-            for (int i = 0; i < guards.Length; i++)
-            {
-                guards[i].GetComponent<GuardBehaviour>().stop();
-            }
+            gameHandler.GetComponent<GameHandlerScript>().disableGuardsAndCompass();
             isTriggered = true;
             player.GetComponent<PlayerMove>().DisableMoving();
             selfieImage.gameObject.SetActive(true);

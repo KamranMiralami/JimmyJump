@@ -25,6 +25,7 @@ public class PatternHandler : MonoBehaviour
     {
         if (finished)
         {
+            gh.disableGuardsAndCompass();
             player.DisableMoving();
             var transform1 = player.transform;
             target.transform.position = transform1.position + Vector3.forward * 5f + Vector3.up * 1f;
