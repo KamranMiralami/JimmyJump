@@ -14034,7 +14034,7 @@ MonoBehaviour:
   Target2: {fileID: 892804005}
   WinOrLose: {fileID: 1506788796}
   goal: {fileID: 851412838}
-  joystick: {fileID: 0}
+  joystick: {fileID: 1594349604}
   winorlosecam: {fileID: 1360921346}
   power: 50
   player: {fileID: 1844437278}
@@ -15789,6 +15789,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
   m_PrefabInstance: {fileID: 1594349602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1594349604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+  m_PrefabInstance: {fileID: 1594349602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1643061813
 GameObject:
   m_ObjectHideFlags: 0
@@ -16138,7 +16143,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
   m_PrefabInstance: {fileID: 1594349602}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1594349604}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
