@@ -89,11 +89,7 @@ public class GameHandlerScript : MonoBehaviour
 
     public void lose()
     {
-        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
-        for(int i=0; i< guards.Length; i++)
-        {
-            guards[i].GetComponent<GuardBehaviour>().stop();
-        }
+        disableGuardsAndCompass();
         GameObject text = Instantiate(youLoseText, mainCanvas.transform);
         loseAudio.Play();
         StartCoroutine(textRoutine(text));
@@ -127,11 +123,7 @@ public class GameHandlerScript : MonoBehaviour
     
     public void win()
     {
-        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
-        for (int i = 0; i < guards.Length; i++)
-        {
-            guards[i].GetComponent<GuardBehaviour>().stop();
-        }
+        disableGuardsAndCompass();
         GameObject text = Instantiate(youWinText, mainCanvas.transform);
         winAudio.Play();
         StartCoroutine(textRoutine(text));
@@ -140,6 +132,28 @@ public class GameHandlerScript : MonoBehaviour
         if(playerLevel < level)
         {
             PlayerPrefs.SetInt("currentLevel", level);
+        }
+    }
+
+    public void disableGuardsAndCompass()
+    {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for (int i = 0; i < guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardBehaviour>().stop();
+        }
+        GameObject[] indicators = GameObject.FindGameObjectsWithTag("Indicator");
+        if (indicators != null)
+        {
+            for (int i = 0; i < indicators.Length; i++)
+            {
+                indicators[i].SetActive(false);
+            }
+        }
+        GameObject compass = GameObject.FindGameObjectWithTag("Compass");
+        if (compass != null)
+        {
+            compass.SetActive(false);
         }
     }
 

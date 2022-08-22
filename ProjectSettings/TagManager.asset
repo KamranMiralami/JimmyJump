@@ -11,6 +11,8 @@ TagManager:
   - SoccerPlayer
   - Win
   - Lose
+  - Compass
+  - Indicator
   layers:
   - Default
   - TransparentFX
