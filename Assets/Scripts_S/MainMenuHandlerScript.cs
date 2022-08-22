@@ -10,6 +10,7 @@ public class MainMenuHandlerScript : MonoBehaviour
     [SerializeField] int maxLevel;
     [SerializeField] Sprite[] levelImages;
     [SerializeField] Image[] uiImages;
+    [SerializeField] Image[] uiBorders;
     [SerializeField] TextMeshProUGUI[] uiTexts;
     [SerializeField] float animationDuration = 0.1f;
     [SerializeField] Button playButton;
@@ -60,9 +61,9 @@ public class MainMenuHandlerScript : MonoBehaviour
         Vector3 temp = uiTexts[1 - index].rectTransform.anchoredPosition3D;
         temp.x = uiTexts[index].rectTransform.sizeDelta.x;
         uiTexts[1 - index].rectTransform.anchoredPosition3D = temp;
-        temp = uiImages[1 - index].rectTransform.anchoredPosition3D;
-        temp.x = uiImages[index].rectTransform.sizeDelta.x;
-        uiImages[1 - index].rectTransform.anchoredPosition3D = temp;
+        temp = uiBorders[1 - index].rectTransform.anchoredPosition3D;
+        temp.x = 900;
+        uiBorders[1 - index].rectTransform.anchoredPosition3D = temp;
         if (levelImages.Length > level)
         {
             uiImages[1 - index].sprite = levelImages[level];
@@ -78,19 +79,19 @@ public class MainMenuHandlerScript : MonoBehaviour
         float destText0 = initialText0 - uiTexts[0].rectTransform.sizeDelta.x;
         float initialText1 = uiTexts[1].rectTransform.anchoredPosition3D.x;
         float destText1 = initialText1 - uiTexts[1].rectTransform.sizeDelta.x;
-        float initial0 = uiImages[0].rectTransform.anchoredPosition3D.x;
-        float dest0 = initial0 - uiImages[0].rectTransform.sizeDelta.x;
-        float initial1 = uiImages[1].rectTransform.anchoredPosition3D.x;
-        float dest1 = initial1 - uiImages[1].rectTransform.sizeDelta.x;
+        float initial0 = uiBorders[0].rectTransform.anchoredPosition3D.x;
+        float dest0 = initial0 - 900;
+        float initial1 = uiBorders[1].rectTransform.anchoredPosition3D.x;
+        float dest1 = initial1 - 900;
         while (t < 1)
         {
             t += Time.deltaTime / duration;
-            Vector3 temp = uiImages[0].rectTransform.anchoredPosition3D;
+            Vector3 temp = uiBorders[0].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initial0, dest0, t);
-            uiImages[0].rectTransform.anchoredPosition3D = temp;
-            temp = uiImages[1].rectTransform.anchoredPosition3D;
+            uiBorders[0].rectTransform.anchoredPosition3D = temp;
+            temp = uiBorders[1].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initial1, dest1, t);
-            uiImages[1].rectTransform.anchoredPosition3D = temp;
+            uiBorders[1].rectTransform.anchoredPosition3D = temp;
             temp = uiTexts[0].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initialText0, destText0, t);
             uiTexts[0].rectTransform.anchoredPosition3D = temp;
@@ -120,9 +121,9 @@ public class MainMenuHandlerScript : MonoBehaviour
         Vector3 temp = uiTexts[1 - index].rectTransform.anchoredPosition3D;
         temp.x = -1 * uiTexts[index].rectTransform.sizeDelta.x;
         uiTexts[1 - index].rectTransform.anchoredPosition3D = temp;
-        temp = uiImages[1 - index].rectTransform.anchoredPosition3D;
-        temp.x = -1 * uiImages[index].rectTransform.sizeDelta.x;
-        uiImages[1 - index].rectTransform.anchoredPosition3D = temp;
+        temp = uiBorders[1 - index].rectTransform.anchoredPosition3D;
+        temp.x = -1 * 900;
+        uiBorders[1 - index].rectTransform.anchoredPosition3D = temp;
         if (levelImages.Length > level)
         {
             uiImages[1 - index].sprite = levelImages[level];
@@ -138,19 +139,19 @@ public class MainMenuHandlerScript : MonoBehaviour
         float destText0 = initialText0 + uiTexts[0].rectTransform.sizeDelta.x;
         float initialText1 = uiTexts[1].rectTransform.anchoredPosition3D.x;
         float destText1 = initialText1 + uiTexts[1].rectTransform.sizeDelta.x;
-        float initial0 = uiImages[0].rectTransform.anchoredPosition3D.x;
-        float dest0 = initial0 + uiImages[0].rectTransform.sizeDelta.x;
-        float initial1 = uiImages[1].rectTransform.anchoredPosition3D.x;
-        float dest1 = initial1 + uiImages[1].rectTransform.sizeDelta.x;
+        float initial0 = uiBorders[0].rectTransform.anchoredPosition3D.x;
+        float dest0 = initial0 + 900;
+        float initial1 = uiBorders[1].rectTransform.anchoredPosition3D.x;
+        float dest1 = initial1 + 900;
         while (t < 1)
         {
             t += Time.deltaTime / duration;
-            Vector3 temp = uiImages[0].rectTransform.anchoredPosition3D;
+            Vector3 temp = uiBorders[0].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initial0, dest0, t);
-            uiImages[0].rectTransform.anchoredPosition3D = temp;
-            temp = uiImages[1].rectTransform.anchoredPosition3D;
+            uiBorders[0].rectTransform.anchoredPosition3D = temp;
+            temp = uiBorders[1].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initial1, dest1, t);
-            uiImages[1].rectTransform.anchoredPosition3D = temp;
+            uiBorders[1].rectTransform.anchoredPosition3D = temp;
             temp = uiTexts[0].rectTransform.anchoredPosition3D;
             temp.x = Mathf.Lerp(initialText0, destText0, t);
             uiTexts[0].rectTransform.anchoredPosition3D = temp;
