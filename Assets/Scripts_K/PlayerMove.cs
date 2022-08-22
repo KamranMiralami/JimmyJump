@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     float cameraOffsetPercentage=0f;
     Vector3 direction = Vector3.zero;
     public bool moveEnable=true;
+    float scaledSpeed;
     private void Start()
     {
         cf = new Vector3(cameraFollow.offset.x, cameraFollow.offset.y, cameraFollow.offset.z);
@@ -26,22 +27,47 @@ public class PlayerMove : MonoBehaviour
             return;
         }
         direction = new Vector3(0, 0, 1) * joystick.Vertical + new Vector3(1, 0, 0) * joystick.Horizontal;
+        scaledSpeed=Mathf.Lerp(0, speed, Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z));
+        anim.SetFloat("animSpeed", scaledSpeed/speed);
         //direction = -1* direction.normalized;
         if (direction == Vector3.zero)
         {
-            direction=transform.forward;
-           //cameraOffsetPercentage =Mathf.Clamp01(cameraOffsetPercentage- Time.deltaTime*0.1f);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isWalking", false);
+            //direction=transform.forward;
+            //cameraOffsetPercentage =Mathf.Clamp01(cameraOffsetPercentage- Time.deltaTime*0.1f);
             cameraOffsetPercentage = 0;
         }
         else
         {
+            Debug.Log(scaledSpeed / speed);
+            if (scaledSpeed / speed < 0.4f)
+            {
+                anim.SetBool("isWalking", true);
+                StartCoroutine(RunDelay());
+            }
+            else
+            {
+                anim.SetBool("isRunning", true);
+                StartCoroutine(WalkDelay());
+            }
             cameraOffsetPercentage = Mathf.Clamp01(cameraOffsetPercentage + Time.deltaTime * 0.002f);
         }
         //Debug.LogWarning(cameraOffsetPercentage);
         transform.forward = Vector3.Lerp(transform.forward, direction, 15f * Time.deltaTime);
-        characterController.SimpleMove(direction.normalized * speed);
+        characterController.SimpleMove(direction.normalized * scaledSpeed);
         cameraFollow.offset.x = Mathf.Lerp(cameraFollow.offset.x, cf.x + direction.x * 1.5f, cameraOffsetPercentage);
         cameraFollow.offset.z = Mathf.Lerp(cameraFollow.offset.z, cf.z + direction.z * 1.5f, cameraOffsetPercentage);
+    }
+    IEnumerator RunDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("isRunning", false);
+    }
+    IEnumerator WalkDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("isWalking", false);
     }
     public void EnableMoving()
     {
