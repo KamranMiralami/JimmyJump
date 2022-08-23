@@ -18,7 +18,27 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         cf = new Vector3(cameraFollow.offset.x, cameraFollow.offset.y, cameraFollow.offset.z);
-        anim.SetBool("isRunning", true);
+        anim.SetBool("isRunning", false);
+        anim.SetBool("isVaulting", true);
+        DisableMoving();
+        StartCoroutine(enableAfterVault(1.8f));
+    }
+
+    IEnumerator enableAfterVault(float duration)
+    {
+        float t = 0f;
+        while(t < 0.3)
+        {
+            t += Time.deltaTime / duration;
+            yield return null;
+        }
+        anim.SetBool("isVaulting", false);
+        while (t < 1)
+        {
+            t += Time.deltaTime / duration;
+            yield return null;
+        }
+        EnableMoving();
     }
     private void FixedUpdate()
     {
