@@ -121,7 +121,7 @@ public class GameHandlerScript : MonoBehaviour
         }
         SceneManager.LoadScene("MainMenu");
     }
-    
+
     public void win()
     {
         disableGuardsAndCompass();

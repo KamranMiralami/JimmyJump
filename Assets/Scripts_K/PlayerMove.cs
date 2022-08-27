@@ -20,14 +20,19 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         cf = new Vector3(cameraFollow.offset.x, cameraFollow.offset.y, cameraFollow.offset.z);
+        vaultFunc(true);
+    }
+
+    public void vaultFunc(bool enableAfterVault)
+    {
         anim.SetBool("isRunning", false);
         anim.SetBool("isVaulting", true);
         DisableMoving();
         gameHandler.GetComponent<GameHandlerScript>().disableCompass();
-        StartCoroutine(vault(vaultDistance, vaultDuration));
+        StartCoroutine(vault(vaultDistance, vaultDuration, enableAfterVault));
     }
 
-    IEnumerator vault(float distance, float duration)
+    IEnumerator vault(float distance, float duration, bool enableAfterVault)
     {
         float t = 0f;
         bool temp = false;
@@ -44,8 +49,11 @@ public class PlayerMove : MonoBehaviour
             gameObject.transform.position = Vector3.Lerp(initial, dest, t);
             yield return null;
         }
-        EnableMoving();
-        gameHandler.GetComponent<GameHandlerScript>().enableCompassIfNeeded();
+        if (enableAfterVault)
+        {
+            EnableMoving();
+            gameHandler.GetComponent<GameHandlerScript>().enableCompassIfNeeded();
+        }
     }
     private void FixedUpdate()
     {
