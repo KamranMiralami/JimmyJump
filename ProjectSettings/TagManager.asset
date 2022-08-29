@@ -14,6 +14,8 @@ TagManager:
   - Compass
   - Indicator
   - PlayerTarget
+  - Front
+  - Back
   layers:
   - Default
   - TransparentFX
