@@ -1224,7 +1224,7 @@ GameObject:
   - component: {fileID: 542458946}
   m_Layer: 0
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: Back
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3684,12 +3684,6 @@ MonoBehaviour:
   target: {fileID: 472100670}
   speed: 2
   SoccerBehaviour: {fileID: 975007180}
-  player: {fileID: 975007172}
-  relativePos: {x: 0, y: 0, z: 0}
-  forward: {x: 0, y: 0, z: 0}
-  angle: 0
-  stop: 0
-  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!111 &975007179
 Animation:
   m_ObjectHideFlags: 0
@@ -5758,6 +5752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a44ed9df03a51b4fa11ce76a213b0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 975007180}
 --- !u!1001 &1887094595
 PrefabInstance:
   m_ObjectHideFlags: 0
