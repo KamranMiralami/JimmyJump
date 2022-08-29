@@ -3623,6 +3623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameEndTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 7227631308593197568, guid: de4e15c71a8ca024d8bc04db85103482, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7227631308593197570, guid: de4e15c71a8ca024d8bc04db85103482, type: 3}
       propertyPath: m_RootOrder
       value: 10
