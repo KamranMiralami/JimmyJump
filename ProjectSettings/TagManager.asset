@@ -13,6 +13,7 @@ TagManager:
   - Lose
   - Compass
   - Indicator
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX
