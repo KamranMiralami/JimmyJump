@@ -16,6 +16,8 @@ public class TriggerWinScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.gameObject.transform.forward = new Vector3(-1, 0, 0);
+            other.gameObject.GetComponent<PlayerMove>().vaultFunc(false);
             gameHandler.GetComponent<GameHandlerScript>().win();
         }
     }

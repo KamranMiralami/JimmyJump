@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] float vaultDuration = 1.8f;
+    [SerializeField] float vaultDistance = 2f;
     [SerializeField] GameObject gameHandler;
     public Joystick joystick;
     public Animator anim;
@@ -18,7 +20,40 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         cf = new Vector3(cameraFollow.offset.x, cameraFollow.offset.y, cameraFollow.offset.z);
-        anim.SetBool("isRunning", true);
+        vaultFunc(true);
+    }
+
+    public void vaultFunc(bool enableAfterVault)
+    {
+        anim.SetBool("isRunning", false);
+        anim.SetBool("isVaulting", true);
+        DisableMoving();
+        gameHandler.GetComponent<GameHandlerScript>().disableCompass();
+        StartCoroutine(vault(vaultDistance, vaultDuration, enableAfterVault));
+    }
+
+    IEnumerator vault(float distance, float duration, bool enableAfterVault)
+    {
+        float t = 0f;
+        bool temp = false;
+        Vector3 initial = gameObject.transform.position;
+        Vector3 dest = (gameObject.transform.forward * distance) + initial;
+        while (t < 1)
+        {
+            if(!temp && t >= 0.3)
+            {
+                temp = true;
+                anim.SetBool("isVaulting", false);
+            }
+            t += Time.deltaTime / duration;
+            gameObject.transform.position = Vector3.Lerp(initial, dest, t);
+            yield return null;
+        }
+        if (enableAfterVault)
+        {
+            EnableMoving();
+            gameHandler.GetComponent<GameHandlerScript>().enableCompassIfNeeded();
+        }
     }
     private void FixedUpdate()
     {

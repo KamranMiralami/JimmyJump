@@ -15,6 +15,7 @@ public class GameHandlerScript : MonoBehaviour
     [SerializeField] AudioSource loseAudio;
     [SerializeField] AudioSource winAudio;
     Quaternion cameraQuaternion;
+    bool compassNeeded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -120,7 +121,7 @@ public class GameHandlerScript : MonoBehaviour
         }
         SceneManager.LoadScene("MainMenu");
     }
-    
+
     public void win()
     {
         disableGuardsAndCompass();
@@ -142,6 +143,11 @@ public class GameHandlerScript : MonoBehaviour
         {
             guards[i].GetComponent<GuardBehaviour>().stop();
         }
+        disableCompass();
+    }
+
+    public void disableCompass()
+    {
         GameObject[] indicators = GameObject.FindGameObjectsWithTag("Indicator");
         if (indicators != null)
         {
@@ -153,7 +159,39 @@ public class GameHandlerScript : MonoBehaviour
         GameObject compass = GameObject.FindGameObjectWithTag("Compass");
         if (compass != null)
         {
-            compass.SetActive(false);
+            if (compass.activeSelf)
+            {
+                compassNeeded = true;
+            }
+            MeshRenderer[] meshRenderers = compass.GetComponentsInChildren<MeshRenderer>();
+            for(int i=0; i<meshRenderers.Length; i++)
+            {
+                meshRenderers[i].enabled = false;
+            }
+        }
+    }
+
+    public void enableCompassIfNeeded()
+    {
+        GameObject[] indicators = GameObject.FindGameObjectsWithTag("Indicator");
+        if (indicators != null)
+        {
+            for (int i = 0; i < indicators.Length; i++)
+            {
+                indicators[i].SetActive(true);
+            }
+        }
+        GameObject compass = GameObject.FindGameObjectWithTag("Compass");
+        if (compass != null)
+        {
+            if (compassNeeded)
+            {
+                MeshRenderer[] meshRenderers = compass.GetComponentsInChildren<MeshRenderer>();
+                for (int i = 0; i < meshRenderers.Length; i++)
+                {
+                    meshRenderers[i].enabled = true;
+                }
+            }
         }
     }
 
