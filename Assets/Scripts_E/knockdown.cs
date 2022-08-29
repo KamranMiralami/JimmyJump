@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scripts_E
 {
-    public class Knockdown : MonoBehaviour
+    public class knockdown : MonoBehaviour
     {
         [SerializeField] private Animator anim;
         private static readonly int Fall = Animator.StringToHash("Fall");
